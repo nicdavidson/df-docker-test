@@ -26,6 +26,6 @@ RUN chmod +x /docker-entrypoint.sh && ln -sf /dev/stderr /var/log/nginx/error.lo
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-EXPOSE 80 22 
+EXPOSE 80 2222
 
 CMD ["/docker-entrypoint.sh"]
