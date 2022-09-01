@@ -9,7 +9,7 @@ RUN git clone https://github.com/dreamfactorysoftware/dreamfactory.git /opt/drea
 WORKDIR /opt/dreamfactory
 
 # Uncomment lines 12 & 21 if you would like to upgrade your environment while replacing the License Key value with your issued Key and adding the license files to the df-docker directory.
-# COPY composer.* /opt/dreamfactory/
+COPY composer.* /opt/dreamfactory/
 
 # Install packages
 RUN composer install --no-dev --ignore-platform-reqs && \
@@ -26,6 +26,6 @@ RUN chmod +x /docker-entrypoint.sh && ln -sf /dev/stderr /var/log/nginx/error.lo
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-EXPOSE 80
+EXPOSE 80 22 
 
 CMD ["/docker-entrypoint.sh"]
