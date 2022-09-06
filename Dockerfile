@@ -26,7 +26,7 @@ RUN chmod +x /docker-entrypoint.sh && ln -sf /dev/stderr /var/log/nginx/error.lo
 ## added by Azure SSh
 # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
 RUN apt-get update
-RUN apt install openssh \
+RUN apt install openssh-server\
      && echo "root:Docker!" | chpasswd 
 # Copy the sshd_config file to the /etc/ssh/ directory
 COPY sshd_config /etc/ssh/
