@@ -39,7 +39,7 @@ RUN chmod +x /tmp/ssh_setup.sh \
 
 RUN mkdir -p /opt/startup
 COPY init_container.sh /opt/startup
-RUN chmod 755 /tmp/init_container.sh
+RUN chmod 755 /opt/startup/init_container.sh
 
 
 # Clean up
