@@ -37,13 +37,14 @@ COPY ssh_setup.sh /tmp
 RUN chmod +x /tmp/ssh_setup.sh \
     && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null)
 
-COPY init_container.sh /opt/startup
-RUN chmod 755 /opt/startup/init_container.sh
-ENTRYPOINT ["/opt/startup/init_container.sh"]
+
+COPY init_container.sh /tmp
+RUN chmod 755 /tmp/init_container.sh
+
 
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 80 2222
 
-CMD ["/docker-entrypoint.sh"]
+CMD ["/tmp/init_container.sh", "/docker-entrypoint.sh"]
